@@ -1,0 +1,10 @@
+# CodeLite specific files
+.codelite/
+*.o
+*.exe
+
+# Other compiled files
+*.out
+
+# Env Secret
+*.env
