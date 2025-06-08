@@ -3,8 +3,99 @@
 *.o
 *.exe
 
-# Other compiled files
-*.out
-
 # Env Secret
 *.env
+
+# Build directories and artifacts
+build/
+build-*/
+Debug/
+Release/
+bin/
+obj/
+dist/
+
+# Compiled Object files
+*.o
+*.obj
+*.ko
+*.elf
+*.out
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Cache and temporary files
+.cache/
+*.tmp
+*.temp
+*~
+*.swp
+*.swo
+
+# IDE and editor files
+.vscode/
+.vs/
+*.vcxproj*
+*.sln
+*.suo
+*.user
+*.ncb
+*.aps
+*.plg
+*.opt
+*.clw
+*.tags
+*.session
+compile_commands.json
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Makefile generated files (keep custom Makefiles)
+Makefile.in
+Makefile.am
+
+# Core dumps
+core
+*.core
+
+# Profiling data
+gmon.out
+*.gcov
+*.gcda
+*.gcno
