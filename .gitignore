@@ -2,6 +2,7 @@
 .codelite/
 *.o
 *.exe
+*.mk
 
 # Env Secret
 *.env
