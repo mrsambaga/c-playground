@@ -36,7 +36,17 @@ void dataTypes()
     printf("%e\n", doubleData);
     printf("%ld\n", longData);
     printf("%d\n", myGender); 
-    printf("%i", boolData);
+    printf("%i\n", boolData);
+}
+
+void printRectangle()
+{
+    double width = 1.5;
+    double height = 2.1;
+    printf("width = %.2f\n", width);
+    printf("height = %.2f\n", height);
+    printf("perimeter = %.2f\n", 2.0 * (width + height));
+    printf("area = %.2f", (width * height));
 }
 
 int main(int argc, char **argv)
@@ -44,6 +54,7 @@ int main(int argc, char **argv)
     printName("Sam");
     printAndInputNumber();
     dataTypes();
+    printRectangle();
         
     return 0;
 }
