@@ -16,11 +16,21 @@ void printAndInputNumber()
 
 void dataTypes()
 {
+    //Basic
     int integerData = 1;
     float floatData = 5.33;
     bool boolData = true;
     long longData = 100000000000000;
     double doubleData = 5.333333333333333333;
+    
+    //Enum
+    enum gender {male, female};
+    enum gender myGender = male;
+    
+    
+    //Character
+    char myCharacter = 'X';
+    printf("%c", myCharacter);
 }
 
 int main(int argc, char **argv)
