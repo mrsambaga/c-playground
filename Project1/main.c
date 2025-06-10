@@ -21,22 +21,29 @@ void dataTypes()
     float floatData = 5.33;
     bool boolData = true;
     long longData = 100000000000000;
-    double doubleData = 5.333333333333333333;
+    double doubleData = 5.33e+10;
     
     //Enum
     enum gender {male, female};
     enum gender myGender = male;
-    
-    
+        
     //Character
     char myCharacter = 'X';
-    printf("%c", myCharacter);
+    
+    printf("%c\n", myCharacter);
+    printf("%i\n", integerData);
+    printf("%f\n", floatData);
+    printf("%e\n", doubleData);
+    printf("%ld\n", longData);
+    printf("%d\n", myGender); 
+    printf("%i", boolData);
 }
 
 int main(int argc, char **argv)
 {
     printName("Sam");
     printAndInputNumber();
+    dataTypes();
         
     return 0;
 }
