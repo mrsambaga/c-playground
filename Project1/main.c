@@ -46,8 +46,28 @@ void printRectangle()
     printf("width = %.2f\n", width);
     printf("height = %.2f\n", height);
     printf("perimeter = %.2f\n", 2.0 * (width + height));
-    printf("area = %.2f", (width * height));
+    printf("area = %.2f\n", (width * height));
 }
+
+void operators()
+{
+    int a = 10;
+    int b = 33;
+    _Bool c = 1;
+    _Bool d = 0;
+    
+    int addition = a + b;
+    int remainder = b % a;
+    int increment = a++;
+    _Bool boolean = c && d;
+    
+    printf("addition : %d\n", addition);
+    printf("remainder : %d\n", remainder);
+    printf("increment : %d\n", increment);
+    printf("boolean : %d\n", boolean);
+    
+}
+
 
 int main(int argc, char **argv)
 {
@@ -55,6 +75,7 @@ int main(int argc, char **argv)
     printAndInputNumber();
     dataTypes();
     printRectangle();
+    operators();
         
     return 0;
 }
