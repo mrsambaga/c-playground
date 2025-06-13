@@ -49,6 +49,20 @@ void printRectangle()
     printf("area = %.2f\n", (width * height));
 }
 
+//Challenge Time Conversion
+void convertMinutesToDayAndYear()
+{
+    double day = 60 * 24;
+    double year = day * 365;
+    int minutesInput;
+    
+    printf("Enter minutes : ");
+    scanf("%d", &minutesInput); 
+    
+    printf("Minutes in days : %e\n", minutesInput / day);
+    printf("Minutes in year : %e\n", minutesInput / year);
+}
+
 void operators()
 {
     int a = 10;
@@ -76,6 +90,7 @@ int main(int argc, char **argv)
     dataTypes();
     printRectangle();
     operators();
+    convertMinutesToDayAndYear();
         
     return 0;
 }
