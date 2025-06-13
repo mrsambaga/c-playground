@@ -82,6 +82,16 @@ void operators()
     
 }
 
+void bitwiseOperation()
+{
+    unsigned int a = 13; //0000 1101
+    int result = 0;
+    
+    result = a << 2; //0011 0100
+    
+    printf("result %d\n", result);
+}
+
 
 int main(int argc, char **argv)
 {
@@ -91,6 +101,7 @@ int main(int argc, char **argv)
     printRectangle();
     operators();
     convertMinutesToDayAndYear();
+    bitwiseOperation();
         
     return 0;
 }
