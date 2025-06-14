@@ -141,6 +141,24 @@ void calculateWeeklyPay()
     printf("Your nett salary is : %.2f\n", nettPay);
 }
 
+void switchStatement()
+{
+    enum Weekday {Monday, Tuesday, Wednesday, Thursday, Friday};
+    enum Weekday today = Monday;
+    
+    switch (today)
+    {
+        case Monday:
+            printf("Today is monday");
+            break;
+        case Monday:
+            printf("Today is tuesday");
+            break;
+        default:
+            printf("Today is not a weekday");
+    }
+}
+
 
 int main(int argc, char **argv)
 {
@@ -152,7 +170,8 @@ int main(int argc, char **argv)
 //    convertMinutesToDayAndYear();
 //    bitwiseOperation();
 //    dataTypeSize();
-    calculateWeeklyPay();
+//    calculateWeeklyPay();
+    switchStatement();
         
     return 0;
 }
