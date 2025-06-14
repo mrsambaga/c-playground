@@ -75,6 +75,8 @@ void operators()
     int increment = a++;
     _Bool boolean = c && d;
     
+    
+    
     printf("addition : %d\n", addition);
     printf("remainder : %d\n", remainder);
     printf("increment : %d\n", increment);
@@ -92,6 +94,17 @@ void bitwiseOperation()
     printf("result %d\n", result);
 }
 
+//Challenge Data Type Size
+void dataTypeSize()
+{
+    printf("int byte size : %zd\n", sizeof(int));
+    printf("char byte size : %zd\n", sizeof(char));
+    printf("long byte size : %zd\n", sizeof(long));
+    printf("double byte size : %zd\n", sizeof(double));
+}
+
+
+
 
 int main(int argc, char **argv)
 {
@@ -102,6 +115,7 @@ int main(int argc, char **argv)
     operators();
     convertMinutesToDayAndYear();
     bitwiseOperation();
+    dataTypeSize();
         
     return 0;
 }
