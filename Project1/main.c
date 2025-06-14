@@ -103,19 +103,56 @@ void dataTypeSize()
     printf("double byte size : %zd\n", sizeof(double));
 }
 
+//Challenge Weekly Pay
+void calculateWeeklyPay() 
+{
+    int numberOfHours = 0;
+    printf("How many hours do you works ? " );
+    scanf("%d", &numberOfHours);
 
+    int basicPayRate = 12;
+    int overtime = basicPayRate * 1.5;
+    float taxRateFirst300 = 0.15;
+    float taxRateNext150 = 0.2;
+    float taxRateTheRest = 0.25;
+    
+    float grossPay = 0;
+    if (numberOfHours > 40) {
+        grossPay = 40 * basicPayRate + (numberOfHours-40) * overtime;
+    } else {
+        grossPay = numberOfHours * basicPayRate;
+    }
+    
+    float nettPay = grossPay;
+    if (nettPay <= 300) {
+        nettPay -= grossPay * taxRateFirst300;
+    }
+    if (nettPay > 300 && grossPay <= 450) {
+        nettPay -= 300 * taxRateFirst300;
+        nettPay -= (grossPay-300) * taxRateNext150;
+    }
+    if (nettPay > 450) {
+        nettPay -= 300 * taxRateFirst300;
+        nettPay -= 150 * taxRateNext150;
+        nettPay -= (grossPay-450) * taxRateTheRest;
+    }
+    
+    printf("Your gross salary is : %.2f\n", grossPay);
+    printf("Your nett salary is : %.2f\n", nettPay);
+}
 
 
 int main(int argc, char **argv)
 {
-    printName("Sam");
-    printAndInputNumber();
-    dataTypes();
-    printRectangle();
-    operators();
-    convertMinutesToDayAndYear();
-    bitwiseOperation();
-    dataTypeSize();
+//    printName("Sam");
+//    printAndInputNumber();
+//    dataTypes();
+//    printRectangle();
+//    operators();
+//    convertMinutesToDayAndYear();
+//    bitwiseOperation();
+//    dataTypeSize();
+    calculateWeeklyPay();
         
     return 0;
 }
