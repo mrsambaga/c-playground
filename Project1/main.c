@@ -151,7 +151,7 @@ void switchStatement()
         case Monday:
             printf("Today is monday");
             break;
-        case Monday:
+        case Tuesday:
             printf("Today is tuesday");
             break;
         default:
@@ -171,7 +171,7 @@ int main(int argc, char **argv)
 //    bitwiseOperation();
 //    dataTypeSize();
 //    calculateWeeklyPay();
-    switchStatement();
+   switchStatement();
         
     return 0;
 }
