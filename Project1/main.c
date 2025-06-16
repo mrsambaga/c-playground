@@ -223,6 +223,9 @@ void arrays()
     }
     
     printf("Your average grade is : %.2f\n", (float) sum/count);
+    
+    //initialized array
+    int grades[10] = {80,70,90,40,50,30,50,100,100,70}
 }
 
 int main(int argc, char **argv)
