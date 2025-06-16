@@ -207,6 +207,23 @@ void guessNumber()
     }
 }
 
+void arrays()
+{
+    int grades[10];
+    int count = 10;
+    long sum = 0;
+    
+    printf("Enter the 10 grades:\n");
+    
+    for(int i=0; i<count; i++)
+    {
+        printf("%2u> :", i+1);
+        scanf("%d", &grades[i]);
+        sum += grades[i];
+    }
+    
+    printf("Your average grade is : %.2f\n", (float) sum/count);
+}
 
 int main(int argc, char **argv)
 {
@@ -220,7 +237,8 @@ int main(int argc, char **argv)
 //    dataTypeSize();
 //    calculateWeeklyPay();
 //    switchStatement();
-    guessNumber();
+//    guessNumber();
+    arrays();
         
     return 0;
 }
