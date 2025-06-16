@@ -225,7 +225,39 @@ void arrays()
     printf("Your average grade is : %.2f\n", (float) sum/count);
     
     //initialized array
-    int grades[10] = {80,70,90,40,50,30,50,100,100,70}
+    int gradesInitialized[10] = {80,70,90,40,50,30,50,100,100,70};
+    printf("Grades initialized : %d", gradesInitialized[0]);
+}
+
+//Find prime numbers challenge
+void findPrimeNumbers()
+{
+    printf("The prime numbers between 3-100 is : \n");
+    int primeNumbers[100] = {2,3};
+    int arrayLength = 2;
+    
+    for (int i = 4; i <= 100; i++)
+    {
+        printf("Hello %d\n", i);
+        for (int y = 0; y < arrayLength; y++)
+        {
+            if (i % primeNumbers[y] == 0)
+            {
+                break;
+            }
+            
+            if (y == arrayLength-1)
+            {
+                primeNumbers[y+1] = i;
+                arrayLength++;
+            }
+        }
+    }
+        
+    for (int i = 0; i < arrayLength; i++)
+    {
+        printf("%d\n", primeNumbers[i]);
+    }
 }
 
 int main(int argc, char **argv)
@@ -241,7 +273,8 @@ int main(int argc, char **argv)
 //    calculateWeeklyPay();
 //    switchStatement();
 //    guessNumber();
-    arrays();
+//    arrays();
+    findPrimeNumbers();
         
     return 0;
 }
