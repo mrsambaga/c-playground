@@ -3,6 +3,8 @@
   <Description/>
   <Dependencies/>
   <VirtualDirectory Name="src">
+    <File Name="arrays.c"/>
+    <File Name="functions.c"/>
     <File Name="main.c"/>
   </VirtualDirectory>
   <Settings Type="Executable">
