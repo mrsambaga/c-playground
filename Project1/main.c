@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "arrays.h"
+#include "functions.h"
 
 void printName(const char *name)
 {
@@ -210,7 +211,7 @@ void guessNumber()
 
 int main(int argc, char **argv)
 {
-    calculateRainfall();
+    greatestCommonDivisor();
         
     return 0;
 }
