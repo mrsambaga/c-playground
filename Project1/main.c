@@ -4,6 +4,7 @@
 #include <time.h>
 #include "arrays.h"
 #include "functions.h"
+#include "tictactoe.h"
 
 void printName(const char *name)
 {
@@ -211,7 +212,7 @@ void guessNumber()
 
 int main(int argc, char **argv)
 {
-    greatestCommonDivisor();
+    tictactoe();
         
     return 0;
 }

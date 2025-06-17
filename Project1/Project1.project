@@ -3,6 +3,7 @@
   <Description/>
   <Dependencies/>
   <VirtualDirectory Name="src">
+    <File Name="tictactoe.c"/>
     <File Name="arrays.c"/>
     <File Name="functions.c"/>
     <File Name="main.c"/>

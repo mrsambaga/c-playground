@@ -64,7 +64,7 @@ AS       := C:/cygwin64/bin/as.exe
 ## User defined environment variables
 ##
 CodeLiteDir:=C:\Program Files\CodeLite
-Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/functions.c$(ObjectSuffix) $(IntermediateDirectory)/arrays.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/functions.c$(ObjectSuffix) $(IntermediateDirectory)/arrays.c$(ObjectSuffix) $(IntermediateDirectory)/tictactoe.c$(ObjectSuffix) 
 
 
 
@@ -118,6 +118,14 @@ $(IntermediateDirectory)/arrays.c$(DependSuffix): arrays.c
 
 $(IntermediateDirectory)/arrays.c$(PreprocessSuffix): arrays.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/arrays.c$(PreprocessSuffix) arrays.c
+
+$(IntermediateDirectory)/tictactoe.c$(ObjectSuffix): tictactoe.c $(IntermediateDirectory)/tictactoe.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "D:/Projects/c-playground/Project1/tictactoe.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/tictactoe.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/tictactoe.c$(DependSuffix): tictactoe.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/tictactoe.c$(ObjectSuffix) -MF$(IntermediateDirectory)/tictactoe.c$(DependSuffix) -MM tictactoe.c
+
+$(IntermediateDirectory)/tictactoe.c$(PreprocessSuffix): tictactoe.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/tictactoe.c$(PreprocessSuffix) tictactoe.c
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
