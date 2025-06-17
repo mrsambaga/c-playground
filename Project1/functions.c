@@ -4,6 +4,7 @@
 _Bool isNegativeNumber(int number);
 int calculateCommonDivisor(int firstNumber, int secondNumber);
 
+//Greatest Common Divisor
 void greatestCommonDivisor()
 {
     int firstNumber = 0;
