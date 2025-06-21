@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 #include "arrays.h"
 #include "functions.h"
 #include "tictactoe.h"
@@ -151,6 +152,19 @@ void switchStatement()
     }
 }
 
+void strings()
+{
+    char myString[] = "Hello World !";
+    char temp[50];
+    
+    printf("String : %s has length : %ld\n", myString, strlen(myString));
+    
+    strncpy(temp, myString, sizeof(temp)-1);
+    printf("The copied string : %s\n", temp);
+    
+    printf("strcmp(myString, temp) is %d\n", strcmp(myString, temp)); 
+}
+
 //Guess The Number Game Challenge
 void guessNumber()
 {
@@ -199,7 +213,8 @@ void guessNumber()
 
 int main(int argc, char **argv)
 {
-    tictactoe();
+//    tictactoe();
+    strings();
         
     return 0;
 }
