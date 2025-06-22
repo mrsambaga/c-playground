@@ -64,7 +64,7 @@ AS       := C:/cygwin64/bin/as.exe
 ## User defined environment variables
 ##
 CodeLiteDir:=C:\Program Files\CodeLite
-Objects0=$(IntermediateDirectory)/arrays.c$(ObjectSuffix) $(IntermediateDirectory)/loop.c$(ObjectSuffix) $(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/basic.c$(ObjectSuffix) $(IntermediateDirectory)/functions.c$(ObjectSuffix) $(IntermediateDirectory)/tictactoe.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/arrays.c$(ObjectSuffix) $(IntermediateDirectory)/loop.c$(ObjectSuffix) $(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/conditionalStatement.c$(ObjectSuffix) $(IntermediateDirectory)/basic.c$(ObjectSuffix) $(IntermediateDirectory)/functions.c$(ObjectSuffix) $(IntermediateDirectory)/tictactoe.c$(ObjectSuffix) 
 
 
 
@@ -118,6 +118,14 @@ $(IntermediateDirectory)/main.c$(DependSuffix): main.c
 
 $(IntermediateDirectory)/main.c$(PreprocessSuffix): main.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.c$(PreprocessSuffix) main.c
+
+$(IntermediateDirectory)/conditionalStatement.c$(ObjectSuffix): conditionalStatement.c $(IntermediateDirectory)/conditionalStatement.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "D:/Projects/c-playground/Project1/conditionalStatement.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/conditionalStatement.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/conditionalStatement.c$(DependSuffix): conditionalStatement.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/conditionalStatement.c$(ObjectSuffix) -MF$(IntermediateDirectory)/conditionalStatement.c$(DependSuffix) -MM conditionalStatement.c
+
+$(IntermediateDirectory)/conditionalStatement.c$(PreprocessSuffix): conditionalStatement.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/conditionalStatement.c$(PreprocessSuffix) conditionalStatement.c
 
 $(IntermediateDirectory)/basic.c$(ObjectSuffix): basic.c $(IntermediateDirectory)/basic.c$(DependSuffix)
 	$(CC) $(SourceSwitch) "D:/Projects/c-playground/Project1/basic.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/basic.c$(ObjectSuffix) $(IncludePath)

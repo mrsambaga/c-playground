@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+//Challenge Weekly Pay
+void calculateWeeklyPay() 
+{
+    int numberOfHours = 0;
+    printf("How many hours do you works ? " );
+    scanf("%d", &numberOfHours);
+
+    int basicPayRate = 12;
+    int overtime = basicPayRate * 1.5;
+    float taxRateFirst300 = 0.15;
+    float taxRateNext150 = 0.2;
+    float taxRateTheRest = 0.25;
+    
+    float grossPay = 0;
+    if (numberOfHours > 40) {
+        grossPay = 40 * basicPayRate + (numberOfHours-40) * overtime;
+    } else {
+        grossPay = numberOfHours * basicPayRate;
+    }
+    
+    float nettPay = grossPay;
+    if (nettPay <= 300) {
+        nettPay -= grossPay * taxRateFirst300;
+    }
+    if (nettPay > 300 && grossPay <= 450) {
+        nettPay -= 300 * taxRateFirst300;
+        nettPay -= (grossPay-300) * taxRateNext150;
+    }
+    if (nettPay > 450) {
+        nettPay -= 300 * taxRateFirst300;
+        nettPay -= 150 * taxRateNext150;
+        nettPay -= (grossPay-450) * taxRateTheRest;
+    }
+    
+    printf("Your gross salary is : %.2f\n", grossPay);
+    printf("Your nett salary is : %.2f\n", nettPay);
+}
+
+void switchStatement()
+{
+    enum Weekday {Monday, Tuesday, Wednesday, Thursday, Friday};
+    enum Weekday today = Monday;
+    
+    switch (today)
+    {
+        case Monday:
+            printf("Today is monday");
+            break;
+        case Tuesday:
+            printf("Today is tuesday");
+            break;
+        default:
+            printf("Today is not a weekday");
+    }
+}
