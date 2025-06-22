@@ -64,7 +64,7 @@ AS       := C:/cygwin64/bin/as.exe
 ## User defined environment variables
 ##
 CodeLiteDir:=C:\Program Files\CodeLite
-Objects0=$(IntermediateDirectory)/loop.c$(ObjectSuffix) $(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/functions.c$(ObjectSuffix) $(IntermediateDirectory)/arrays.c$(ObjectSuffix) $(IntermediateDirectory)/tictactoe.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/arrays.c$(ObjectSuffix) $(IntermediateDirectory)/loop.c$(ObjectSuffix) $(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/basic.c$(ObjectSuffix) $(IntermediateDirectory)/functions.c$(ObjectSuffix) $(IntermediateDirectory)/tictactoe.c$(ObjectSuffix) 
 
 
 
@@ -95,6 +95,14 @@ PreBuild:
 ##
 ## Objects
 ##
+$(IntermediateDirectory)/arrays.c$(ObjectSuffix): arrays.c $(IntermediateDirectory)/arrays.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "D:/Projects/c-playground/Project1/arrays.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/arrays.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/arrays.c$(DependSuffix): arrays.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/arrays.c$(ObjectSuffix) -MF$(IntermediateDirectory)/arrays.c$(DependSuffix) -MM arrays.c
+
+$(IntermediateDirectory)/arrays.c$(PreprocessSuffix): arrays.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/arrays.c$(PreprocessSuffix) arrays.c
+
 $(IntermediateDirectory)/loop.c$(ObjectSuffix): loop.c $(IntermediateDirectory)/loop.c$(DependSuffix)
 	$(CC) $(SourceSwitch) "D:/Projects/c-playground/Project1/loop.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/loop.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/loop.c$(DependSuffix): loop.c
@@ -111,6 +119,14 @@ $(IntermediateDirectory)/main.c$(DependSuffix): main.c
 $(IntermediateDirectory)/main.c$(PreprocessSuffix): main.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.c$(PreprocessSuffix) main.c
 
+$(IntermediateDirectory)/basic.c$(ObjectSuffix): basic.c $(IntermediateDirectory)/basic.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "D:/Projects/c-playground/Project1/basic.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/basic.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/basic.c$(DependSuffix): basic.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/basic.c$(ObjectSuffix) -MF$(IntermediateDirectory)/basic.c$(DependSuffix) -MM basic.c
+
+$(IntermediateDirectory)/basic.c$(PreprocessSuffix): basic.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/basic.c$(PreprocessSuffix) basic.c
+
 $(IntermediateDirectory)/functions.c$(ObjectSuffix): functions.c $(IntermediateDirectory)/functions.c$(DependSuffix)
 	$(CC) $(SourceSwitch) "D:/Projects/c-playground/Project1/functions.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/functions.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/functions.c$(DependSuffix): functions.c
@@ -118,14 +134,6 @@ $(IntermediateDirectory)/functions.c$(DependSuffix): functions.c
 
 $(IntermediateDirectory)/functions.c$(PreprocessSuffix): functions.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/functions.c$(PreprocessSuffix) functions.c
-
-$(IntermediateDirectory)/arrays.c$(ObjectSuffix): arrays.c $(IntermediateDirectory)/arrays.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "D:/Projects/c-playground/Project1/arrays.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/arrays.c$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/arrays.c$(DependSuffix): arrays.c
-	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/arrays.c$(ObjectSuffix) -MF$(IntermediateDirectory)/arrays.c$(DependSuffix) -MM arrays.c
-
-$(IntermediateDirectory)/arrays.c$(PreprocessSuffix): arrays.c
-	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/arrays.c$(PreprocessSuffix) arrays.c
 
 $(IntermediateDirectory)/tictactoe.c$(ObjectSuffix): tictactoe.c $(IntermediateDirectory)/tictactoe.c$(DependSuffix)
 	$(CC) $(SourceSwitch) "D:/Projects/c-playground/Project1/tictactoe.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/tictactoe.c$(ObjectSuffix) $(IncludePath)
