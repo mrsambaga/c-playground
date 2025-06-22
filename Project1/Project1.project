@@ -3,6 +3,7 @@
   <Description/>
   <Dependencies/>
   <VirtualDirectory Name="src">
+    <File Name="string.c"/>
     <File Name="conditionalStatement.c"/>
     <File Name="basic.c"/>
     <File Name="loop.c"/>
