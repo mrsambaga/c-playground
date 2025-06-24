@@ -25,8 +25,23 @@ void pointers()
     printf("int_pointer = %p\n", int_pointer); //pointer value (address of count)
 }
 
+void pointerChallenge()
+{
+    int count = 100;
+    int *pCount = NULL;
+    
+    pCount = &count;
+    
+    printf("Count address = %p\n", &count); 
+    printf("Count value = %d\n", count);
+    
+    printf("pCount address = %p\n", &pCount); 
+    printf("pCount value = %p\n", pCount);
+    printf("pCount dereference = %d\n", *pCount);
+}
+
 int main(int argc, char **argv)
 {
-    pointers();
+    pointerChallenge();
     return 0;
 }
