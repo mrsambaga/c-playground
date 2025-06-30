@@ -40,8 +40,42 @@ void pointerChallenge()
     printf("pCount dereference = %d\n", *pCount);
 }
 
+void swapPointer(int *a, int *b)
+{
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+    
+    return;
+}
+
+void swapValue(int a, int b)
+{
+    int temp;
+    temp = a;
+    a = b;
+    b = temp;
+    
+    return;
+}
+
+void swap()
+{
+    int a = 100;
+    int b = 200;
+    
+    printf("Value a before swap : %d\n", a);
+    printf("Value b before swap : %d\n", b);
+    
+    swapValue(a, b);
+    
+    printf("Value a after swap : %d\n", a);
+    printf("Value b after swap : %d\n", b);
+}
+
 int main(int argc, char **argv)
 {
-    pointerChallenge();
+    swap();
     return 0;
 }
