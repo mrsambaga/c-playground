@@ -91,8 +91,21 @@ void squareNumber()
     printf("Value a before square : %d\n", a);
 }
 
+void calculateLength(const char *ptr)
+{
+    int beginning = *ptr;
+    int end = *ptr;
+    while (*ptr)
+        ++end,++ptr;
+    
+    printf("String length is %d\n", end - beginning);
+    printf("Beginning address is %d\n", beginning);
+    printf("End address is %d\n", end);
+}
+
 int main(int argc, char **argv)
 {
-    squareNumber();
+    char text[] = "Hello World";
+    calculateLength(text);
     return 0;
 }
