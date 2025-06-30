@@ -74,8 +74,25 @@ void swap()
     printf("Value b after swap : %d\n", b);
 }
 
+void square(int *x)
+{
+    *x = (*x) * (*x);
+    return;
+}
+
+void squareNumber()
+{
+    int a = 10;
+    
+    printf("Value a before square : %d\n", a);
+    
+    square(&a);
+    
+    printf("Value a before square : %d\n", a);
+}
+
 int main(int argc, char **argv)
 {
-    swap();
+    squareNumber();
     return 0;
 }
