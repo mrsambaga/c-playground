@@ -2,13 +2,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
-#include <string.h>
-#include "basic.h"
-#include "arrays.h"
-#include "functions.h"
-#include "tictactoe.h"
-#include "loop.h"
-#include "conditionalStatement.h"
 
 void pointers()
 {
@@ -103,9 +96,21 @@ void calculateLength(const char *ptr)
     printf("End address is %d\n", end);
 }
 
+void dynamicMemoryAllocation()
+{
+    char *str = NULL;
+    
+    str = (char *) malloc(15);
+    strcpy(str, "Hello");
+    printf("String: %s, Address: %p\n", str, str);
+    
+    str = (char *) realloc(str, 25);
+    strcpy(str, "Hello World");
+    printf("String: %s, Address: %p\n", str, str);
+}
+
 int main(int argc, char **argv)
 {
-    char text[] = "Hello World";
-    calculateLength(text);
+    dynamicMemoryAllocation();
     return 0;
 }
