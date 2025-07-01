@@ -107,6 +107,8 @@ void dynamicMemoryAllocation()
     str = (char *) realloc(str, 25);
     strcpy(str, "Hello World");
     printf("String: %s, Address: %p\n", str, str);
+    
+    free(str);
 }
 
 int main(int argc, char **argv)
