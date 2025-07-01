@@ -96,40 +96,55 @@ void calculateLength(const char *ptr)
     printf("End address is %d\n", end);
 }
 
-void dynamicMemoryAllocation()
-{
-    char *str = NULL;
-    
-    str = (char *) malloc(15);
-    strcpy(str, "Hello");
-    printf("String: %s, Address: %p\n", str, str);
-    
-    str = (char *) realloc(str, 25);
-    strcpy(str, "Hello World");
-    printf("String: %s, Address: %p\n", str, str);
-        
-    free(str);
-}
+//void dynamicMemoryAllocation()
+//{
+//    char *str = NULL;
+//    
+//    str = (char *) malloc(15);
+//    strcpy(str, "Hello");
+//    printf("String: %s, Address: %p\n", str, str);
+//    
+//    str = (char *) realloc(str, 25);
+//    strcpy(str, "Hello World");
+//    printf("String: %s, Address: %p\n", str, str);
+//        
+//    free(str);
+//}
 
-void malocChallenge()
+//void malocChallenge()
+//{
+//    int size;
+//    char *text = NULL;
+//    printf("Please enter a memory size: ");
+//    scanf("%d", &size);
+//    
+//    text = (char *)malloc(size * sizeof(char));
+//    
+//    printf("Please enter a text: ");
+//    scanf("%s", text);
+//    
+//    printf("Your text: %s\n", text);
+//    
+//    free(text);
+//}
+
+struct employee{
+    char name[30];
+    char hireDate[15];
+    float salary;
+};
+
+void structure()
 {
-    int size;
-    char *text = NULL;
-    printf("Please enter a memory size: ");
-    scanf("%d", &size);
+    struct employee emp = {"Mikey", "7/16/2025", 1000000.0f};
     
-    text = (char *)malloc(size * sizeof(char));
-    
-    printf("Please enter a text: ");
-    scanf("%s", text);
-    
-    printf("Your text: %s\n", text);
-    
-    free(text);
+    printf("Employee name %s\n", emp.name);
+    printf("Employee name %s\n", emp.hireDate);
+    printf("Employee name %.1f\n", emp.salary);
 }
 
 int main(int argc, char **argv)
 {
-    malocChallenge();
+    structure();
     return 0;
 }
