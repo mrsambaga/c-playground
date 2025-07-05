@@ -217,6 +217,33 @@ void fileInputOutput()
     return;
 }
 
+void writeFile()
+{
+    FILE *fp;
+    int c;
+    
+    fp = fopen("file.txt", "w+");
+    
+    if (fp == NULL)
+    {
+        perror("File is null\n");
+        return;
+    }
+    
+    fputs("Hello C\n", fp);
+    fputs("Hello World", fp);
+    rewind(fp);
+    
+    while ((c = fgetc(fp)) != EOF) {
+        printf("%c", c);
+    }
+    printf("\n");
+    
+    fclose(fp);
+    fp = NULL;
+    return;
+}
+
 void countFileRow()
 {
     FILE *fp;
@@ -246,6 +273,6 @@ void countFileRow()
 
 int main(int argc, char **argv)
 {
-    countFileRow();
+    writeFile();
     return 0;
 }
