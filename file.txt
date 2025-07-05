@@ -1,2 +1,2 @@
-Hello C
-Hello World
+HELLO WORLD
+HELLO C

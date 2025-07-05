@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include <string.h>
+#include <string.h> 
+#include <ctype.h>
 
 void pointers()
 {
@@ -271,8 +272,58 @@ void countFileRow()
     return;
 }
 
+void toUpperCase()
+{
+    FILE *fp;
+    FILE *fp1;
+    char c = ' ';
+
+    fp = fopen("file.txt", "r");
+    if (fp == NULL)
+    {
+        perror("File is null\n");
+        return;
+    }
+    
+    fp1 = fopen("temp.txt", "w+");
+    if (fp1 == NULL)
+    {
+        perror("File is null\n");
+        return;
+    }
+    
+    while ((c = fgetc(fp)) != EOF) {
+        if (islower(c))
+        {
+            c = c-32;
+        }
+        fputc(c, fp1);
+    }
+    
+    fclose(fp);
+    fclose(fp1);
+    
+    remove("file.txt");
+    rename("temp.txt", "file.txt");
+
+    fp = fopen("file.txt", "r");
+    if (fp == NULL)
+    {
+        perror("File is null\n");
+        return;
+    }
+    
+    while ((c = fgetc(fp)) != EOF) {
+        printf("%c", c);
+    }
+    printf("\n");
+    
+    fclose(fp);
+    return;
+}
+
 int main(int argc, char **argv)
 {
-    writeFile();
+    toUpperCase();
     return 0;
 }
