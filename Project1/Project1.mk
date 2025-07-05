@@ -64,8 +64,8 @@ AS       := C:/cygwin64/bin/as.exe
 ## User defined environment variables
 ##
 CodeLiteDir:=C:\Program Files\CodeLite
-Objects0=$(IntermediateDirectory)/tictactoe.c$(ObjectSuffix) $(IntermediateDirectory)/functions.c$(ObjectSuffix) $(IntermediateDirectory)/basic.c$(ObjectSuffix) $(IntermediateDirectory)/conditionalStatement.c$(ObjectSuffix) $(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/arrays.c$(ObjectSuffix) $(IntermediateDirectory)/loop.c$(ObjectSuffix) $(IntermediateDirectory)/memoryAllocation.c$(ObjectSuffix) $(IntermediateDirectory)/string.c$(ObjectSuffix) $(IntermediateDirectory)/pointer.c$(ObjectSuffix) \
-	
+Objects0=$(IntermediateDirectory)/structure.c$(ObjectSuffix) $(IntermediateDirectory)/tictactoe.c$(ObjectSuffix) $(IntermediateDirectory)/functions.c$(ObjectSuffix) $(IntermediateDirectory)/basic.c$(ObjectSuffix) $(IntermediateDirectory)/conditionalStatement.c$(ObjectSuffix) $(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/arrays.c$(ObjectSuffix) $(IntermediateDirectory)/loop.c$(ObjectSuffix) $(IntermediateDirectory)/memoryAllocation.c$(ObjectSuffix) $(IntermediateDirectory)/string.c$(ObjectSuffix) \
+	$(IntermediateDirectory)/pointer.c$(ObjectSuffix) 
 
 
 
@@ -96,6 +96,14 @@ PreBuild:
 ##
 ## Objects
 ##
+$(IntermediateDirectory)/structure.c$(ObjectSuffix): structure.c $(IntermediateDirectory)/structure.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "D:/Projects/c-playground/Project1/structure.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/structure.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/structure.c$(DependSuffix): structure.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/structure.c$(ObjectSuffix) -MF$(IntermediateDirectory)/structure.c$(DependSuffix) -MM structure.c
+
+$(IntermediateDirectory)/structure.c$(PreprocessSuffix): structure.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/structure.c$(PreprocessSuffix) structure.c
+
 $(IntermediateDirectory)/tictactoe.c$(ObjectSuffix): tictactoe.c $(IntermediateDirectory)/tictactoe.c$(DependSuffix)
 	$(CC) $(SourceSwitch) "D:/Projects/c-playground/Project1/tictactoe.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/tictactoe.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/tictactoe.c$(DependSuffix): tictactoe.c

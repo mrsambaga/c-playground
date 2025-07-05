@@ -3,6 +3,7 @@
   <Description/>
   <Dependencies/>
   <VirtualDirectory Name="src">
+    <File Name="structure.c"/>
     <File Name="memoryAllocation.c"/>
     <File Name="pointer.c"/>
     <File Name="string.c"/>
