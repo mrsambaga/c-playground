@@ -3,6 +3,7 @@
   <Description/>
   <Dependencies/>
   <VirtualDirectory Name="src">
+    <File Name="pointer.c"/>
     <File Name="string.c"/>
     <File Name="conditionalStatement.c"/>
     <File Name="basic.c"/>
