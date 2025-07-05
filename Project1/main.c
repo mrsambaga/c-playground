@@ -187,8 +187,38 @@ void structureChallenge()
     free(pItem->name);
 }
 
+void fileInputOutput()
+{
+    FILE *fp;
+    int c;
+    char str[11];
+    
+    fp = fopen("file.txt", "r");
+    
+    if (fp == NULL)
+    {
+        perror("File is null\n");
+        return;
+    }
+    
+    while ((c = fgetc(fp)) != EOF) {
+        printf("%c", c);
+    }
+    printf("\n");
+    
+    rewind(fp);
+    
+    if ( fgets (str, 10, fp) != NULL) {
+        printf("%s", str);
+    }
+    
+    fclose(fp);
+    fp = NULL;
+    return;
+}
+
 int main(int argc, char **argv)
 {
-    structureChallenge();
+    fileInputOutput();
     return 0;
 }
