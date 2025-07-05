@@ -217,8 +217,35 @@ void fileInputOutput()
     return;
 }
 
+void countFileRow()
+{
+    FILE *fp;
+    char c;
+    int rowCount = 0;
+
+    fp = fopen("rowCount.txt", "r");
+    
+    if (fp == NULL)
+    {
+        perror("File is null\n");
+        return;
+    }
+    
+    while ((c = fgetc(fp)) != EOF) {
+        if (c == '\n'){
+            rowCount++;
+        }
+    }
+    
+    printf("Total row : %d\n", ++rowCount);
+    
+    fclose(fp);
+    fp = NULL;
+    return;
+}
+
 int main(int argc, char **argv)
 {
-    fileInputOutput();
+    countFileRow();
     return 0;
 }
