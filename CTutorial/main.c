@@ -140,5 +140,6 @@ void toUpperCase()
 
 int main(int argc, char **argv)
 {
+    toUpperCase();
     return 0;
 }
