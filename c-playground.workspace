@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="c-playground" Database="" Version="10000">
-  <Project Name="Project1" Path="CTutorial/Project1.project" Active="Yes"/>
+  <Project Name="Project1" Path="CTutorial/Project1.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug">
       <Environment/>
-      <Project Name="CTutorial" ConfigName="Debug"/>
       <Project Name="CTutorial" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release">

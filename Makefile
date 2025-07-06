@@ -2,7 +2,7 @@
 
 All:
 	@echo "==========Building project:[ CTutorial - Debug ]=========="
-	@cd "Project1" && "$(MAKE)" -f  "CTutorial.mk"
+	@cd "CTutorial" && "$(MAKE)" -f  "CTutorial.mk"
 clean:
 	@echo "==========Cleaning project:[ CTutorial - Debug ]----------"
-	@cd "Project1" && "$(MAKE)" -f  "CTutorial.mk" clean
+	@cd "CTutorial" && "$(MAKE)" -f  "CTutorial.mk" clean
