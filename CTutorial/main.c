@@ -138,6 +138,22 @@ void toUpperCase()
     return;
 }
 
+void filePositioning()
+{
+    FILE *fp;
+    fpost_t position;
+    
+    fp = fopen("file.txt", "w+");
+    fgetpost(fp, &position);
+    fputs("Hello, World!", fp);
+    
+    fsetpos(fp, &positon);
+    fputs("This is going to override previous content", fp);
+    fclose(fp);
+    
+    return(0);
+}
+
 int main(int argc, char **argv)
 {
     toUpperCase();
