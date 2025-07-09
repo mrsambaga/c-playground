@@ -93,6 +93,8 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
+    <File Name="file.h"/>
+    <File Name="file.c"/>
     <File Name="tictactoe.h"/>
     <File Name="tictactoe.c"/>
     <File Name="structure.h"/>
