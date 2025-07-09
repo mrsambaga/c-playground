@@ -140,10 +140,23 @@ void toUpperCase()
 
 void filePositioning()
 {
-    FILE *fp;
+    FILE *fp = NULL;
     fpos_t position;
+    int len;
+    
+    fp = fopen("file.txt", "r");
+    if (fp == NULL) {
+        perror("Error opening file");
+        return;
+    }
+    
+    fseek(fp, 0, SEEK_END);
+    len = ftell(fp);
+    printf("Total size of file.txt = %d bytes\n", len);
+    fclose(fp);
     
     fp = fopen("file.txt", "w+");
+    
     fgetpos(fp, &position);
     fputs("Hello, World!", fp);
     

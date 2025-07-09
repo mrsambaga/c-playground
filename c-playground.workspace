@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="c-playground" Database="" Version="10000">
-  <Project Name="Project1" Path="CTutorial/Project1.project" Active="No"/>
   <Project Name="command-line-shell" Path="command-line-shell/command-line-shell.project" Active="No"/>
   <Project Name="c-tutorial" Path="c-tutorial/c-tutorial.project" Active="Yes"/>
   <BuildMatrix>
