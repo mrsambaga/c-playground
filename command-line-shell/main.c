@@ -2,10 +2,12 @@
 #include <stdbool.h>
 #include <string.h> 
 
+#define BUFFER_SIZE 1024
+
 int main(int argc, char **argv)
 {
     bool isDone = false;
-    char input[20];
+    char input[BUFFER_SIZE];
     
     while (!isDone)
     {
