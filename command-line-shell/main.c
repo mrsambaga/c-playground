@@ -6,15 +6,14 @@
 
 int main(int argc, char **argv)
 {
-    bool isDone = false;
     char input[BUFFER_SIZE];
     
-    while (!isDone)
+    while (1)
     {
         scanf("%s", input);
         
         if (strcmp(input, "end") == 0){
-            isDone = true;
+            break;
         }
     }
     
