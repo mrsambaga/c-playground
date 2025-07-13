@@ -1,17 +1,18 @@
 # C Playground
 
-A personal repository for practicing and studying the C programming language.
+My personal repository to practice, experiment, and learn the C programming language.
 
-## 📘 Source
+## 📂 About This Repository
 
-This repository follows the **C Programming Course by Jason Fedin**. Please refer to the original course for full content and detailed explanations.
+This repository is a collection of small C projects, code snippets, and tutorials. It serves as my hands-on lab for exploring C programming concepts, from the basics to more advanced topics.
 
-## 📚 Course Topics
+## 📁 Current Structure
 
-- Basic data types and operations
-- Input and output
-- Arrays
-- Functions
-- Conditional statements
-- Loops
-- Strings
+- `c-tutorial/` — Contains basic C tutorial code.
+- `command-line-shell/` — Contains project about command line shell using C
+
+## 📌 Note
+
+This repository is primarily for personal learning. Feel free to explore the code if you find it useful!
+
+---
