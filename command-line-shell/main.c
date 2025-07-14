@@ -70,6 +70,7 @@ int main(int argc, char **argv)
         tokenizeInput(&i, input, args);
         printCommandAndArgument(i, args);
         executeCommand(args);
+
     }
     
 	return 0;
