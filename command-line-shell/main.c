@@ -7,6 +7,15 @@
 #define BUFFER_SIZE 1024
 #define ARG_SIZE 64
 
+void printCommandAndArgument(int i, char *args[]) {
+    if (i > 0) {
+        printf("Command: %s\n", args[0]);
+        for (int j = 1; j < i; j++) {
+            printf("Arg %d: %s\n", j, args[j]);
+        }
+    }
+}
+
 void executeCommand(char *args[]) {
     pid_t pid = fork();
     if (pid == -1) {
@@ -56,13 +65,8 @@ int main(int argc, char **argv)
         }
         args[i] = NULL;
         
-        if (i > 0) {
-            printf("Command: %s\n", args[0]);
-            for (int j = 1; j < i; j++) {
-                printf("Arg %d: %s\n", j, args[j]);
-            }
-        }
         
+        printCommandAndArgument(i, args);
         executeCommand(args);
     }
     
