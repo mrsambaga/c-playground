@@ -7,6 +7,15 @@
 #define BUFFER_SIZE 1024
 #define ARG_SIZE 64
 
+void tokenizeInput(int i, char input[], char *args[]) {
+    char *token = strtok(input, " ");
+    while (token != NULL) {
+        args[i++] = token;
+        token = strtok(NULL, " ");
+    }
+    args[i] = NULL;
+} 
+
 void printCommandAndArgument(int i, char *args[]) {
     if (i > 0) {
         printf("Command: %s\n", args[0]);
@@ -58,14 +67,7 @@ int main(int argc, char **argv)
             break;
         }
         
-        char *token = strtok(input, " ");
-        while (token != NULL) {
-            args[i++] = token;
-            token = strtok(NULL, " ");
-        }
-        args[i] = NULL;
-        
-        
+        tokenizeInput(i, input, args);
         printCommandAndArgument(i, args);
         executeCommand(args);
     }
