@@ -27,11 +27,12 @@ void executeCommand(char *args[]) {
 int main(int argc, char **argv)
 {
     char input[BUFFER_SIZE];
-    char *args[ARG_SIZE];
-    int i = 0;
     
     while (1)
     {
+        char *args[ARG_SIZE];
+        int i = 0;
+    
         printf("$ ");
         fflush(stdout);
         
