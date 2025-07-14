@@ -1,9 +1,28 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h> 
+#include <unistd.h>
+#include <sys/wait.h>
 
 #define BUFFER_SIZE 1024
 #define ARG_SIZE 64
+
+void executeCommand(char *args[]) {
+    pid_t pid = fork();
+    if (pid == -1) {
+        perror("fork failed");
+        return;
+    }
+    if (pid == 0) {
+        if (execvp(args[0], args) == -1) {
+            perror("exec failed");
+        }
+        return;
+    }
+    
+    int status;
+    waitpid(pid, &status, 0);
+}
 
 int main(int argc, char **argv)
 {
@@ -41,6 +60,8 @@ int main(int argc, char **argv)
                 printf("Arg %d: %s\n", j, args[j]);
             }
         }
+        
+        executeCommand(args);
     }
     
 	return 0;
