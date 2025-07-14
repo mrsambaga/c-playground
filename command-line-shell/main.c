@@ -53,6 +53,7 @@ int main(int argc, char **argv)
             args[i++] = token;
             token = strtok(NULL, " ");
         }
+        args[i] = NULL;
         
         if (i > 0) {
             printf("Command: %s\n", args[0]);
