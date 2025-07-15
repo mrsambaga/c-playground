@@ -8,6 +8,11 @@
 #define BUFFER_SIZE 1024
 #define ARG_SIZE 64
 
+void isExitProgram(char input[])
+{
+    
+}
+
 void tokenizeInput(int *argCount, char input[], char *args[]) {
     char *token = strtok(input, " ");
     while (token != NULL) {
@@ -51,7 +56,7 @@ int main(int argc, char **argv)
     while (1)
     {
         char *args[ARG_SIZE];
-        int i = 0;
+        int argCount = 0;
     
         printf("$ ");
         fflush(stdout);
@@ -63,14 +68,18 @@ int main(int argc, char **argv)
         
         input[strcspn(input, "\n")] = '\0';
         
-        printf("You entered: %s\n", input);
+        if (strlen(input) == 0) {
+            continue;
+        }
         
         if (strcmp(input, "end") == 0){
             break;
         }
         
-        tokenizeInput(&i, input, args);
-        printCommandAndArgument(i, args);
+        printf("You entered: %s\n", input);
+        
+        tokenizeInput(&argCount, input, args);
+        printCommandAndArgument(argCount, args);
         executeCommand(args);
     }
     
