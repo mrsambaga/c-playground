@@ -13,21 +13,23 @@ void isExitProgram(char input[])
     
 }
 
-void tokenizeInput(int *argCount, char input[], char *args[]) {
+int tokenizeInput(char input[], char *args[]) {
+    int argCount = 0;
     char *token = strtok(input, " ");
+    
     while (token != NULL) {
-        args[(*argCount)++] = token;
+        args[argCount++] = token;
         token = strtok(NULL, " ");
     }
-    args[*argCount] = NULL;
+    args[argCount] = NULL;
+    
+    return argCount;
 } 
 
 void printCommandAndArgument(int argCount, char *args[]) {
-    if (argCount > 0) {
-        printf("Command: %s\n", args[0]);
-        for (int argIndex = 1; argIndex < argCount; argIndex++) {
-            printf("Arg %d: %s\n", argIndex, args[argIndex]);
-        }
+    printf("Command: %s\n", args[0]);
+    for (int argIndex = 1; argIndex < argCount; argIndex++) {
+        printf("Arg %d: %s\n", argIndex, args[argIndex]);
     }
 }
 
@@ -56,7 +58,6 @@ int main(int argc, char **argv)
     while (1)
     {
         char *args[ARG_SIZE];
-        int argCount = 0;
     
         printf("$ ");
         fflush(stdout);
@@ -78,9 +79,11 @@ int main(int argc, char **argv)
         
         printf("You entered: %s\n", input);
         
-        tokenizeInput(&argCount, input, args);
-        printCommandAndArgument(argCount, args);
-        executeCommand(args);
+        int argCount = tokenizeInput(input, args);
+        if (argCount > 0) {
+            printCommandAndArgument(argCount, args);
+            executeCommand(args);
+        }
     }
     
 	return EXIT_SUCCESS;
