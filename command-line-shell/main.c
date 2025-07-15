@@ -8,20 +8,20 @@
 #define BUFFER_SIZE 1024
 #define ARG_SIZE 64
 
-void tokenizeInput(int *i, char input[], char *args[]) {
+void tokenizeInput(int *argCount, char input[], char *args[]) {
     char *token = strtok(input, " ");
     while (token != NULL) {
-        args[(*i)++] = token;
+        args[(*argCount)++] = token;
         token = strtok(NULL, " ");
     }
-    args[*i] = NULL;
+    args[*argCount] = NULL;
 } 
 
-void printCommandAndArgument(int i, char *args[]) {
-    if (i > 0) {
+void printCommandAndArgument(int argCount, char *args[]) {
+    if (argCount > 0) {
         printf("Command: %s\n", args[0]);
-        for (int j = 1; j < i; j++) {
-            printf("Arg %d: %s\n", j, args[j]);
+        for (int argIndex = 1; argIndex < argCount; argIndex++) {
+            printf("Arg %d: %s\n", argIndex, args[argIndex]);
         }
     }
 }
