@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include <string.h> 
 #include <unistd.h>
@@ -34,6 +35,7 @@ void executeCommand(char *args[]) {
     if (pid == 0) {
         if (execvp(args[0], args) == -1) {
             perror("exec failed");
+            exit(EXIT_FAILURE);
         }
         return;
     }
@@ -70,8 +72,7 @@ int main(int argc, char **argv)
         tokenizeInput(&i, input, args);
         printCommandAndArgument(i, args);
         executeCommand(args);
-
     }
     
-	return 0;
+	return EXIT_SUCCESS;
 }
