@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="c-playground" Database="" Version="10000">
-  <Project Name="command-line-shell" Path="command-line-shell/command-line-shell.project" Active="Yes"/>
+  <Project Name="command-line-shell" Path="command-line-shell/command-line-shell.project" Active="No"/>
   <Project Name="c-tutorial" Path="c-tutorial/c-tutorial.project" Active="No"/>
+  <Project Name="network-programming" Path="network-programming/network-programming.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug">
       <Environment/>
       <Project Name="CTutorial" ConfigName="Debug"/>
       <Project Name="command-line-shell" ConfigName="Debug"/>
       <Project Name="c-tutorial" ConfigName="Debug"/>
+      <Project Name="network-programming" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release">
       <Environment/>
@@ -15,6 +17,7 @@
       <Project Name="CTutorial" ConfigName="Release"/>
       <Project Name="command-line-shell" ConfigName="Release"/>
       <Project Name="c-tutorial" ConfigName="Release"/>
+      <Project Name="network-programming" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

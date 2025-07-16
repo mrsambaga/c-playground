@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "==========Building project:[ command-line-shell - Debug ]=========="
-	@cd "command-line-shell" && "$(MAKE)" -f  "command-line-shell.mk"
+	@echo "==========Building project:[ network-programming - Debug ]=========="
+	@cd "network-programming" && "$(MAKE)" -f  "network-programming.mk"
 clean:
-	@echo "==========Cleaning project:[ command-line-shell - Debug ]----------"
-	@cd "command-line-shell" && "$(MAKE)" -f  "command-line-shell.mk" clean
+	@echo "==========Cleaning project:[ network-programming - Debug ]----------"
+	@cd "network-programming" && "$(MAKE)" -f  "network-programming.mk" clean
