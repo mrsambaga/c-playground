@@ -10,6 +10,7 @@ This repository is a collection of small C projects, code snippets, and tutorial
 
 - `c-tutorial/` — Contains basic C tutorial code.
 - `command-line-shell/` — Contains project about command line shell using C
+- `netowrk-programming/` — Contains resource about network & socket programming in C
 
 ## 📌 Note
 
