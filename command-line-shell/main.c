@@ -76,9 +76,7 @@ int main(int argc, char **argv)
         if (strcmp(input, "end") == 0){
             break;
         }
-        
-        printf("You entered: %s\n", input);
-        
+                
         int argCount = tokenizeInput(input, args);
         if (argCount > 0) {
             printCommandAndArgument(argCount, args);
