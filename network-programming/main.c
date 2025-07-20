@@ -37,8 +37,23 @@ void ipAddressConvertion()
     return;
 }
 
+void sockAddrStruct()
+{
+    struct sockaddr_in addr;
+    
+    addr.sin_family = AF_INET;
+    addr.sin_port = htons(8080);
+    addr.sin_addr.s_addr = htonl(INADDR_ANY);
+    
+    printf("Address family: %d (AF_INET=%d)\n", addr.sin_family, AF_INET);
+    printf("Port (host order): %u\n", ntohs(addr.sin_port));
+    printf("IP address: %s\n", inet_ntoa(addr.sin_addr));
+    
+    return;
+}
+
 int main(int argc, char **argv)
 {
-	ipAddressConvertion();
+	sockAddrStruct();
 	return 0;
 }
