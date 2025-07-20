@@ -15,8 +15,11 @@ void networkCovertion()
 
 void ipAddressConvertion()
 {
-    const char *ip_str = "192.168.1.1";
+    char ip_str[12];
     struct in_addr addr;
+    
+    printf("Enter ip address : ");
+    scanf("%s", ip_str);
     
     addr.s_addr = inet_addr(ip_str);
     
@@ -36,6 +39,6 @@ void ipAddressConvertion()
 
 int main(int argc, char **argv)
 {
-	networkCovertion();
+	ipAddressConvertion();
 	return 0;
 }
