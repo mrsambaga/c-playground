@@ -2,6 +2,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
+//Port to byte order & byte to port convertion
 void networkCovertion()
 {
     uint16_t port = 8080;
@@ -13,6 +14,7 @@ void networkCovertion()
     return;
 }
 
+//Ip address to byte order & byte to address convertion
 void ipAddressConvertion()
 {
     char ip_str[12];
@@ -37,6 +39,7 @@ void ipAddressConvertion()
     return;
 }
 
+//Implementation of socket address struct for socket
 void sockAddrStruct()
 {
     struct sockaddr_in addr;
