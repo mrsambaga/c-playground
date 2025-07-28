@@ -2,11 +2,12 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include <string.h>
 
 //Listens and Accepting Connetions
 void listenAcceptConnections()
 {
-    int sockfd;
+    int sockfd, clientfd = 0;
     struct sockaddr_in sa, client_sa;
     socklen_t client_len = sizeof(client_sa);
     
@@ -33,13 +34,20 @@ void listenAcceptConnections()
         return;
     }
     
-    if (accept(sockfd, (struct sockaddr *)&client_sa, &client_len) == -1) {
+    int client_fd = accept(sockfd, (struct sockaddr *)&client_sa, &client_len);
+    if (client_fd == -1) {
         perror("accept");
         close(sockfd);
         return;
     }
     
     printf("Client connected: %s:%d\n", inet_ntoa(client_sa.sin_addr), ntohs(client_sa.sin_port));
+    
+    const char *msg = "Hello, client!\n";
+    send(clientfd, msg, strlen(msg), 0);
+    close(clientfd);
+    close(sockfd);
+    return;
 }
 
 
