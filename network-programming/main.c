@@ -7,7 +7,7 @@
 //Listens and Accepting Connetions
 void listenAcceptConnections()
 {
-    int sockfd, clientfd = 0;
+    int sockfd, clientfd;
     struct sockaddr_in sa, client_sa;
     socklen_t client_len = sizeof(client_sa);
     
@@ -27,15 +27,15 @@ void listenAcceptConnections()
         return;
     }
     
-    printf("Listening...\n");
     if (listen(sockfd, 5) == -1) {
         perror("listen");
         close(sockfd);
         return;
     }
     
-    int client_fd = accept(sockfd, (struct sockaddr *)&client_sa, &client_len);
-    if (client_fd == -1) {
+    printf("Listening...\n");
+    clientfd = accept(sockfd, (struct sockaddr *)&client_sa, &client_len);
+    if (clientfd == -1) {
         perror("accept");
         close(sockfd);
         return;
@@ -43,8 +43,16 @@ void listenAcceptConnections()
     
     printf("Client connected: %s:%d\n", inet_ntoa(client_sa.sin_addr), ntohs(client_sa.sin_port));
     
-    const char *msg = "Hello, client!\n";
-    send(clientfd, msg, strlen(msg), 0);
+    printf("clientfd: %d\n", clientfd);
+    const char *msg = "Hello, client!\n";    
+    ssize_t sent_bytes = send(clientfd, msg, strlen(msg), 0);
+    if (sent_bytes == -1) {
+        perror("send");
+    }
+    
+    sleep(1);
+
+
     close(clientfd);
     close(sockfd);
     return;
