@@ -3,6 +3,46 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
+//Listens and Accepting Connetions
+void listenAcceptConnections()
+{
+    int sockfd;
+    struct sockaddr_in sa, client_sa;
+    socklen_t client_len = sizeof(client_sa);
+    
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (sockfd == -1) {
+        perror("socket");
+        return;
+    }
+    
+    sa.sin_family = AF_INET;
+    sa.sin_port = htons(8080);
+    sa.sin_addr.s_addr = inet_addr("127.0.0.1");
+    
+    if (bind(sockfd, (struct sockaddr *)&sa, sizeof(sa)) == -1) {
+        perror("bind");
+        close(sockfd);
+        return;
+    }
+    
+    printf("Listening...\n");
+    if (listen(sockfd, 5) == -1) {
+        perror("listen");
+        close(sockfd);
+        return;
+    }
+    
+    if (accept(sockfd, (struct sockaddr *)&client_sa, &client_len) == -1) {
+        perror("accept");
+        close(sockfd);
+        return;
+    }
+    
+    printf("Client connected: %s:%d\n", inet_ntoa(client_sa.sin_addr), ntohs(client_sa.sin_port));
+}
+
+
 //Bind a socket
 void bindSocket()
 {
@@ -86,6 +126,6 @@ void sockAddrStruct()
 
 int main(int argc, char **argv)
 {
-	bindSocket();
+	listenAcceptConnections();
 	return 0;
 }
