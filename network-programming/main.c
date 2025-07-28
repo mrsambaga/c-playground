@@ -1,6 +1,35 @@
 #include <stdio.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <unistd.h>
+
+//Bind a socket
+void bindSocket()
+{
+    int sockfd;
+    struct sockaddr_in sa;
+    
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (sockfd == -1) {
+        perror("socket");
+        return;
+    }
+    
+    sa.sin_family = AF_INET;
+    sa.sin_port = htons(8080);
+    sa.sin_addr.s_addr = inet_addr("127.0.0.1");
+    
+    if (bind(sockfd, (struct sockaddr *)&sa, sizeof(sa)) == -1) {
+        perror("bind");
+        close(sockfd);
+        return;
+    }
+    
+    printf("Bound successfully\n");
+
+    close(sockfd);
+    return;
+}
 
 //Port to byte order & byte to port convertion
 void networkCovertion()
@@ -57,6 +86,6 @@ void sockAddrStruct()
 
 int main(int argc, char **argv)
 {
-	sockAddrStruct();
+	bindSocket();
 	return 0;
 }
