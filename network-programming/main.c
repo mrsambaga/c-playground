@@ -3,6 +3,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <string.h>
+#include <ctype.h>
 
 //Creating client that listen to connection & receive message
 void createClient()
@@ -26,9 +27,16 @@ void createClient()
         return;
     }
     
-    printf("Receiving Message...\n");
-    char msg[1024];
-    int receive_bytes = recv(sockfd, msg, 1024, 0);
+    const char msg_sent[1024] = "Hello, world!\n";    
+    ssize_t sent_bytes = send(sockfd, msg_sent, strlen(msg_sent), 0);
+    if (sent_bytes == -1) {
+        perror("send");
+        close(sockfd);
+        return;
+    }
+    
+    char msg_recv[1024];
+    int receive_bytes = recv(sockfd, msg_recv, sizeof(msg_recv)-1, 0);
     if (receive_bytes == -1) {
         perror("send");
     }
@@ -36,7 +44,8 @@ void createClient()
         printf("Connection closed by server\n");
     }
     if (receive_bytes > 0) {
-        printf("Message Received : %s\n", msg);
+        msg_recv[receive_bytes] = '\0';
+        printf("Message Received : %s\n", msg_recv);
     }
     
     close(sockfd);
@@ -82,9 +91,31 @@ void createServer()
     
     printf("Client connected: %s:%d\n", inet_ntoa(client_sa.sin_addr), ntohs(client_sa.sin_port));
     
-    printf("clientfd: %d\n", clientfd);
-    const char *msg = "Hello, client!\n";    
-    ssize_t sent_bytes = send(clientfd, msg, strlen(msg), 0);
+    char msg_recv[1024];
+    int receive_bytes = recv(clientfd, msg_recv, sizeof(msg_recv)-1, 0);
+    if (receive_bytes == -1) {
+        perror("send");
+        close(clientfd);
+        close(sockfd);
+        return;
+    }
+    if (receive_bytes == 0) {
+        printf("Connection closed by server\n");
+        close(clientfd);
+        close(sockfd);
+        return;
+    }
+    if (receive_bytes > 0) {
+        msg_recv[receive_bytes] = '\0';
+        printf("Message Received : %s\n", msg_recv);
+        
+        msg_recv[receive_bytes] = '\0';
+        for (int i = 0; i < receive_bytes; i++) {
+            msg_recv[i] = toupper(msg_recv[i]);
+        }
+    }
+
+    ssize_t sent_bytes = send(clientfd, msg_recv, strlen(msg_recv), 0);
     if (sent_bytes == -1) {
         perror("send");
     }
@@ -179,6 +210,6 @@ void sockAddrStruct()
 
 int main(int argc, char **argv)
 {
-	createServer();
+	createClient();
 	return 0;
 }
