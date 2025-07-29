@@ -4,6 +4,45 @@
 #include <unistd.h>
 #include <string.h>
 
+//Creating client that listen to connection
+void listeningConnection()
+{
+    int sockfd;
+    struct sockaddr_in sa;
+    
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (sockfd == -1) {
+        perror("socket");
+        return;
+    }
+    
+    sa.sin_family = AF_INET;
+    sa.sin_port = htons(8080);
+    sa.sin_addr.s_addr = inet_addr("127.0.0.1");
+    
+    if (connect(sockfd, (struct sockaddr *)&sa, sizeof(sa)) == -1) {
+        perror("connect");
+        close(sockfd);
+        return;
+    }
+    
+    printf("Receiving Message...\n");
+    char msg[1024];
+    int receive_bytes = recv(sockfd, msg, 1024, 0);
+    if (receive_bytes == -1) {
+        perror("send");
+    }
+    if (receive_bytes == 0) {
+        printf("Connection closed by server\n");
+    }
+    if (receive_bytes > 0) {
+        printf("Message Received : %s\n", msg);
+    }
+    
+    close(sockfd);
+    return;
+}
+
 //Listens and Accepting Connetions
 void listenAcceptConnections()
 {
@@ -51,8 +90,6 @@ void listenAcceptConnections()
     }
     
     sleep(1);
-
-
     close(clientfd);
     close(sockfd);
     return;
