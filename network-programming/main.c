@@ -5,7 +5,7 @@
 #include <string.h>
 #include <ctype.h>
 
-//Creating client that listen to connection & receive message
+//Creating client send & receive message to socket connection
 void createClient()
 {
     int sockfd;
@@ -52,7 +52,7 @@ void createClient()
     return;
 }
 
-//Create server that listens connection & send message to client
+//Create server send and receive message from a client
 void createServer()
 {
     int sockfd, clientfd;
