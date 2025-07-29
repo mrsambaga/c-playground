@@ -4,8 +4,8 @@
 #include <unistd.h>
 #include <string.h>
 
-//Creating client that listen to connection
-void listeningConnection()
+//Creating client that listen to connection & receive message
+void createClient()
 {
     int sockfd;
     struct sockaddr_in sa;
@@ -43,8 +43,8 @@ void listeningConnection()
     return;
 }
 
-//Listens and Accepting Connetions
-void listenAcceptConnections()
+//Create server that listens connection & send message to client
+void createServer()
 {
     int sockfd, clientfd;
     struct sockaddr_in sa, client_sa;
@@ -179,6 +179,6 @@ void sockAddrStruct()
 
 int main(int argc, char **argv)
 {
-	listenAcceptConnections();
+	createServer();
 	return 0;
 }
