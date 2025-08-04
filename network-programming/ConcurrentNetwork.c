@@ -11,10 +11,17 @@ void concurrentServer()
 {
     int sockfd, clientfd;
     struct sockaddr_in sa, client_sa;
+    int opt = 1;
     
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd == -1) {
         perror("socket");
+        return;
+    }
+    
+    if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) == -1) {
+        perror("setsockopt");
+        close(sockfd);
         return;
     }
     
