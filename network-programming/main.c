@@ -5,6 +5,9 @@
 #include <string.h>
 #include <ctype.h>
 
+#include "basicSocket.h"
+#include "concurrentNetwork.h"
+
 
 //Creating client send & receive message to socket connection
 void createClient()
@@ -158,6 +161,6 @@ void bindSocket()
 
 int main(int argc, char **argv)
 {
-	createClient();
+	concurrentServer();
 	return 0;
 }

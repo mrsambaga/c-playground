@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
@@ -6,7 +7,6 @@
 #include <ctype.h>
 
 //Process Multiple Client With Fork
-
 void concurrentServer()
 {
     int sockfd, clientfd;
@@ -47,16 +47,20 @@ void concurrentServer()
         
         if(!fork()) {
             close(sockfd);
-            if(send(new_fd, "Hello, World", 13, 0) == -1) {
+             
+            char msg[1024] = "Hello World !";
+            ssize_t sent_bytes = send(clientfd, msg, strlen(msg), 0);
+            if (sent_bytes == -1) {
                 perror("send");
             }
-            close(new_fd);
+            
+            close(clientfd);
             exit(0);
         }
-        close(new_fd);
+        close(clientfd);
     }
     
-    return 0;
+    return;
 }
 
 //private *get_in_addr(struct sockaddr *sa){
