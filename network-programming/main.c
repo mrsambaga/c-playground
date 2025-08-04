@@ -5,6 +5,7 @@
 #include <string.h>
 #include <ctype.h>
 
+
 //Creating client send & receive message to socket connection
 void createClient()
 {

@@ -93,6 +93,7 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
+    <File Name="ConcurrentNetwork.c"/>
     <File Name="basicSocket.c"/>
     <File Name="main.c"/>
   </VirtualDirectory>
