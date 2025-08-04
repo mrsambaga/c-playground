@@ -52,22 +52,18 @@ void concurrentServer()
         
         printf("Server: got connection from: %s\n", inet_ntoa(client_sa.sin_addr));
         
-        pid_t pid = fork();
-        if (pid == -1) {
-            perror("fork");
-            close(clientfd);
-            continue;
-        }
-        
-        close(sockfd);
-
-        char msg[1024] = "Hello World !";
-        ssize_t sent_bytes = send(clientfd, msg, strlen(msg), 0);
-        if (sent_bytes == -1) {
-            perror("send");
-        }
+        if(!fork()) {
+            close(sockfd);
+             
+            char msg[1024] = "Hello World !";
+            ssize_t sent_bytes = send(clientfd, msg, strlen(msg), 0);
+            if (sent_bytes == -1) {
+                perror("send");
+            }
             
-        close(clientfd);
+            close(clientfd);
+            exit(0);
+        }
         close(clientfd);
     }
     
