@@ -5,7 +5,8 @@
 #include <string.h>
 #include <ctype.h>
 
-//Port to byte order & byte to port convertion
+// Demonstrates conversion of port numbers between host and network byte order
+// Uses htons() for host-to-network and ntohs() for network-to-host conversion
 void networkCovertion()
 {
     uint16_t port = 8080;
@@ -17,7 +18,8 @@ void networkCovertion()
     return;
 }
 
-//Ip address to byte order & byte to address convertion
+// Converts IP addresses between string and binary formats
+// Uses inet_addr() for string-to-binary and inet_ntoa() for binary-to-string
 void ipAddressConvertion()
 {
     char ip_str[12];
@@ -42,7 +44,8 @@ void ipAddressConvertion()
     return;
 }
 
-//Implementation of socket address struct for socket
+// Initializes and displays a socket address structure for IPv4
+// Configures sockaddr_in with family, port, and IP address
 void sockAddrStruct()
 {
     struct sockaddr_in addr;
