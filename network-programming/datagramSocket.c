@@ -7,12 +7,12 @@
 #include <ctype.h>
 #include <errno.h>
 
-void datasSocket()
+void datagramSocketServer()
 {
     int sockfd;
     struct sockaddr_in sa, client_sa;
-    socklen_t client_len;
     char buffer[1024];
+    int opt = 1;
     
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd == -1) {
@@ -50,7 +50,6 @@ void datasSocket()
         }
         if (received_bytes == 0) {
             printf("Connection closed by server\n");
-            close(clientfd);
             close(sockfd);
             return;
         }
@@ -68,6 +67,45 @@ void datasSocket()
         }
     }
     
+    close(sockfd);
+    return;
+}
+
+void datagramSocketClient()
+{
+    int sockfd;
+    struct sockaddr_in sa, server_sa;
+    char buffer[1024];
+    const char *msg = "hello world\n";
+    
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (sockfd == -1) {
+        perror("socket");
+        return;
+    }
+    
+    memset(&sa, 0, sizeof(sa));
+    sa.sin_family = AF_INET;
+    sa.sin_port = htons(8080);
+    sa.sin_addr.s_addr = inet_addr("127.0.0.1");
+    
+    if (sendto(sockfd, msg, strlen(msg), 0, (struct sockaddr *)&sa, sizeof(sa)) == -1) {
+        perror("sendto");
+        close(sockfd);
+        return;
+    }
+    
+    socklen_t server_len = sizeof(server_sa);
+    int received_bytes = recvfrom(sockfd, buffer, sizeof(buffer)-1, 0, (struct sockaddr *)&server_sa, &server_len);
+    if (received_bytes == -1) {
+        perror("bind");
+        close(sockfd);
+        return;
+    }
+    
+    buffer[received_bytes] = '\0';
+    printf("Received from %s:%d: %s\n", inet_ntoa(server_sa.sin_addr), ntohs(server_sa.sin_port), buffer);
+
     close(sockfd);
     return;
 }

@@ -7,6 +7,7 @@
 
 #include "basicSocket.h"
 #include "concurrentNetwork.h"
+#include "datagramSocket.h"
 
 
 //Creating client send & receive message to socket connection
@@ -161,6 +162,6 @@ void bindSocket()
 
 int main(int argc, char **argv)
 {
-	ipAddressConvertion();
+	datagramSocketClient();
 	return 0;
 }
