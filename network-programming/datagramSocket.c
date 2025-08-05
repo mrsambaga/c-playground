@@ -7,6 +7,10 @@
 #include <ctype.h>
 #include <errno.h>
 
+//Demonstrates UDP connection with datagram socket server
+//Socket initialized with SOCK_DGRAM
+//Server then received without using listen and accept
+//Server receive message, upper case it, then send back to client
 void datagramSocketServer()
 {
     int sockfd;
@@ -71,6 +75,9 @@ void datagramSocketServer()
     return;
 }
 
+//Demonstrates UDP connection with datagram socket client
+//Socket initialized with SOCK_DGRAM
+//Client send message, then receive back the same message in upper case
 void datagramSocketClient()
 {
     int sockfd;
