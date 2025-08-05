@@ -161,6 +161,6 @@ void bindSocket()
 
 int main(int argc, char **argv)
 {
-	concurrentServer();
+	ipAddressConvertion();
 	return 0;
 }

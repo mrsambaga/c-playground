@@ -20,6 +20,7 @@ void networkCovertion()
 
 // Converts IP addresses between string and binary formats
 // Uses inet_addr() for string-to-binary and inet_ntoa() for binary-to-string
+// Also demonstrates inet_pton() and inet_ntop() for modern IP address handling
 void ipAddressConvertion()
 {
     char ip_str[12];
@@ -28,9 +29,7 @@ void ipAddressConvertion()
     printf("Enter ip address : ");
     scanf("%s", ip_str);
     
-    addr.s_addr = inet_addr(ip_str);
-    
-    
+    addr.s_addr = inet_addr(ip_str);    
     if (addr.s_addr == INADDR_NONE) {
         printf("Invalid IP: %s\n", ip_str);
     } else {
@@ -39,6 +38,15 @@ void ipAddressConvertion()
         
         char *back_to_str = inet_ntoa(addr);
         printf("Back to IP string: %s\n", back_to_str);
+    }
+    
+    if (inet_pton(AF_INET, ip_str, &addr) <= 0) {
+        printf("Invalid IPv4 address for inet_pton: %s\n", ip_str);
+    } else {
+        printf("IPv4 string (inet_pton): %s\n", ip_str);
+        char str_buf[INET_ADDRSTRLEN];
+        inet_ntop(AF_INET, &addr, str_buf, INET_ADDRSTRLEN);
+        printf("Back to IPv4 string (inet_ntop): %s\n", str_buf);
     }
     
     return;
