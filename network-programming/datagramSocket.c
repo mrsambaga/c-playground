@@ -48,7 +48,7 @@ void datagramSocketServer()
         socklen_t client_len = sizeof(client_sa);
         int received_bytes = recvfrom(sockfd, buffer, sizeof(buffer)-1, 0, (struct sockaddr *)&client_sa, &client_len);
         if (received_bytes == -1) {
-            perror("bind");
+            perror("recvfrom");
             close(sockfd);
             return;
         }
@@ -71,7 +71,6 @@ void datagramSocketServer()
         }
     }
     
-    close(sockfd);
     return;
 }
 
@@ -105,7 +104,7 @@ void datagramSocketClient()
     socklen_t server_len = sizeof(server_sa);
     int received_bytes = recvfrom(sockfd, buffer, sizeof(buffer)-1, 0, (struct sockaddr *)&server_sa, &server_len);
     if (received_bytes == -1) {
-        perror("bind");
+        perror("recvfrom");
         close(sockfd);
         return;
     }
