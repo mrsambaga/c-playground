@@ -26,6 +26,7 @@ void datasSocket()
         return;
     }
     
+    memset(&sa, 0, sizeof(sa));
     sa.sin_family = AF_INET;
     sa.sin_port = htons(8080);
     sa.sin_addr.s_addr = inet_addr("127.0.0.1");
@@ -39,6 +40,7 @@ void datasSocket()
     while (1) {
         printf("Waiting for message....\n");
         
+        memset(&client_sa, 0, sizeof(client_sa));
         socklen_t client_len = sizeof(client_sa);
         int received_bytes = recvfrom(sockfd, buffer, sizeof(buffer)-1, 0, (struct sockaddr *)&client_sa, &client_len);
         if (received_bytes == -1) {
@@ -54,12 +56,15 @@ void datasSocket()
         }
         if (received_bytes > 0) {
             buffer[received_bytes] = '\0';
-            printf("Message Received : %s\n", buffer);
+            printf("Received from %s:%d: %s\n", inet_ntoa(client_sa.sin_addr), ntohs(client_sa.sin_port), buffer);
             
-            buffer[received_bytes] = '\0';
             for (int i = 0; i < received_bytes; i++) {
                 buffer[i] = toupper(buffer[i]);
             }
+        }
+        
+        if (sendto(sockfd, buffer, received_bytes, 0, (struct sockaddr *)&client_sa, client_len) == -1) {
+            perror("sendto");
         }
     }
     
