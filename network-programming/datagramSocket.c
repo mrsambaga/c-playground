@@ -14,7 +14,7 @@ void datagramSocketServer()
     char buffer[1024];
     int opt = 1;
     
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd == -1) {
         perror("socket");
         return;
@@ -78,7 +78,7 @@ void datagramSocketClient()
     char buffer[1024];
     const char *msg = "hello world\n";
     
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd == -1) {
         perror("socket");
         return;
