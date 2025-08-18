@@ -15,7 +15,7 @@ Node* searchNode(Node *head, int value_to_find);
 void deleteNode(Node **head_ref, int key);
 void printList(Node *head);
 
-int main()
+int linkedList()
 {
     printf("--- 1. Creating and printing the initial list ---\n");
     Node *head = createAndPrintList();

@@ -3,10 +3,12 @@
 #include <stdlib.h>
 #include <string.h> 
 #include <ctype.h>
-#include "file.h"
 
-//int main(int argc, char **argv)
-//{
-//    reverseFileContent();
-//    return 0;
-//}
+#include "file.h"
+#include "linkedList.h"
+
+int main(int argc, char **argv)
+{
+    linkedList();
+    return 0;
+}
