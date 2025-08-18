@@ -5,8 +5,8 @@
 #include <ctype.h>
 #include "file.h"
 
-int main(int argc, char **argv)
-{
-    reverseFileContent();
-    return 0;
-}
+//int main(int argc, char **argv)
+//{
+//    reverseFileContent();
+//    return 0;
+//}
